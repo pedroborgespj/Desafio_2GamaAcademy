@@ -34,7 +34,7 @@ Somos parte de uma equipe de desenvolvimento de websites e fomos contratados par
 
 ### Etapa 2
 
-[] Somatória de itens por departamento (você deverá retornar um objeto contendo o nome do departamento e o total de itens nele - Novamente considere os produtos “EM ESTOQUE” - e é apenas a somatória da quantidade de itens)
+[ ] Somatória de itens por departamento (você deverá retornar um objeto contendo o nome do departamento e o total de itens nele - Novamente considere os produtos “EM ESTOQUE” - e é apenas a somatória da quantidade de itens)
 
 - [] Valor total do inventário por departamento (similar ao item anterior - considere TODOS os produtos)
 
