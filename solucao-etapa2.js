@@ -36,11 +36,8 @@ function somarInventarioDepartamento(departamento) {
         somarInventario += produto.qtdEstoque * produto.preco
       }
     }
-    somarInventarioFormatado = somarInventario.toLocaleString('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    })
-    return { departamento, somarInventarioFormatado }
+    somarInventario = somarInventario.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+    return { departamento, somarInventario }
 }
   
 let totalInventario = []
@@ -74,9 +71,19 @@ console.log(totalTicketMedioDepartamento);
 
 // Question 14
 for (let dpto in totalInventario) {
+    totalInventario[dpto].somarInventario = totalInventario[dpto].somarInventario.toLocaleString('pt-BR', {minimumFractionDigits: 2})
     totalInventario[dpto].somarInventario = totalInventario[dpto].somarInventario.replace(".","");
     totalInventario[dpto].somarInventario = totalInventario[dpto].somarInventario.replace(",",".");
-    totalInventario[dpto].somarInventario = totalInventario[dpto].somarInventario.replace.split
-    console.log(totalInventario[dpto].somarInventario)
+    totalInventario[dpto].somarInventario = parseFloat(totalInventario[dpto].somarInventario.value)
 }
-console.log(totalInventario)
+
+// calculando o mais valioso
+let maisValioso = 0;
+let nome = '';
+for (let c in totalInventario) {
+    if (totalInventario[c].somarInventario > maisValioso) {
+        maisValioso = totalInventario[c].somarInventario;
+        nome = totalInventario[c].departamento;
+    }
+}
+console.log(`O Departamento mais valioso é ${nome}. O seu valor é ${maisValioso.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`)
