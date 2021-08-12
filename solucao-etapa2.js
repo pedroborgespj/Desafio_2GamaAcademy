@@ -1,0 +1,2 @@
+const listaProdutos = require('./database');
+
