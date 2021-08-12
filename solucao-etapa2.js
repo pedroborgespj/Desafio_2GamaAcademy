@@ -36,7 +36,10 @@ function somarInventarioDepartamento(departamento) {
         somarInventario += produto.qtdEstoque * produto.preco
       }
     }
-    somarInventario = somarInventario.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+    somarInventario = somarInventario.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    })
     return { departamento, somarInventario }
 }
   
@@ -46,13 +49,12 @@ for (let dpto in listaDepartamentos) {
 }
 console.log(totalInventario)
 
-// Question 13
-
+//Question 13
 function calcularTicketMedioDepartamento(departamento) {
     let soma = 0;
     let aux = 0;
     let tMedio = 0;
-    for (let p in listaProdutos) {
+    for (p in listaProdutos) {
         if (listaProdutos[p].departamento.nomeDepto == departamento) {
             soma += listaProdutos[p].preco;
             aux += 1;
@@ -69,21 +71,4 @@ for (let dpto in listaDepartamentos) {
 }
 console.log(totalTicketMedioDepartamento);
 
-// Question 14
-for (let dpto in totalInventario) {
-    totalInventario[dpto].somarInventario = totalInventario[dpto].somarInventario.toLocaleString('pt-BR', {minimumFractionDigits: 2})
-    totalInventario[dpto].somarInventario = totalInventario[dpto].somarInventario.replace(".","");
-    totalInventario[dpto].somarInventario = totalInventario[dpto].somarInventario.replace(",",".");
-    totalInventario[dpto].somarInventario = parseFloat(totalInventario[dpto].somarInventario.value)
-}
-
-// calculando o mais valioso
-let maisValioso = 0;
-let nome = '';
-for (let c in totalInventario) {
-    if (totalInventario[c].somarInventario > maisValioso) {
-        maisValioso = totalInventario[c].somarInventario;
-        nome = totalInventario[c].departamento;
-    }
-}
-console.log(`O Departamento mais valioso é ${nome}. O seu valor é ${maisValioso.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`)
+//Question 14
