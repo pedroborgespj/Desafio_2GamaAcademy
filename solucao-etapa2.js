@@ -36,10 +36,7 @@ function somarInventarioDepartamento(departamento) {
         somarInventario += produto.qtdEstoque * produto.preco
       }
     }
-    somarInventario = somarInventario.toLocaleString('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    })
+    somarInventario = somarInventario.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
     return { departamento, somarInventario }
 }
   
@@ -72,3 +69,39 @@ for (let dpto in listaDepartamentos) {
 console.log(totalTicketMedioDepartamento);
 
 //Question 14
+function somarInventarioDepartamento(departamento) {
+    let somaInventario = 0;
+    for (let p in listaProdutos) {
+        if (listaProdutos[p].departamento.nomeDepto == departamento) {
+            somaInventario += listaProdutos[p].qtdEstoque * listaProdutos[p].preco
+        }
+    }
+    return {departamento, somaInventario};
+}
+
+var totalInventarioDepartamento = [];
+for (let dpto in listaDepartamentos) {
+    totalInventarioDepartamento.push(somarInventarioDepartamento(listaDepartamentos[dpto]));
+}
+
+let maisValioso = 0;
+let nomeMaisValioso = '';
+for (let c in totalInventarioDepartamento) {
+    if (totalInventarioDepartamento[c].somaInventario > maisValioso) {
+        maisValioso = totalInventarioDepartamento[c].somaInventario;
+        nomeMaisValioso = totalInventarioDepartamento[c].departamento;
+    }
+}
+console.log(`Ex14: O Departamento mais valioso é ${nomeMaisValioso}. O seu valor é ${maisValioso.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`)
+
+//Question 15
+// calculando o menos valioso
+let menosValioso = totalInventarioDepartamento[0].somaInventario;
+let nomeMenosValioso = '';
+for (let c in totalInventarioDepartamento) {
+    if (totalInventarioDepartamento[c].somaInventario < menosValioso) {
+        menosValioso = totalInventarioDepartamento[c].somaInventario;
+        nomeMenosValioso = totalInventarioDepartamento[c].departamento;
+    }
+}
+console.log(`Ex15: O Departamento menos valioso é ${nomeMenosValioso}. O seu valor é ${menosValioso.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`)
